@@ -1,0 +1,25 @@
+void PostOrderTraversal( BinTree BT )
+ {   
+     BinTree T =BT;   
+     Stack S = CreatStack( MaxSize ); 
+     Stack Q = CreatStack( MaxSize );
+     while( T || !IsEmpty(S) )
+    {  
+       while(T)
+       { 
+         Push(S,T);  
+           Push(Q,T);
+         T = T->Right;
+        }          //向右将沿途结点一路压栈
+       if(!IsEmpty(S))
+       {  
+         T = Pop(S);
+         T = T->Left; //转向左子树
+        }   
+   }  
+   while( !IsEmpty(Q) )
+    { 
+      T = Pop(Q);
+      printf(“%5d”, T->Data); 
+    }  
+}
